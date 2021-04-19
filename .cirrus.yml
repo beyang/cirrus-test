@@ -4,11 +4,8 @@ task:
       VERSION: 1.15
       # VERSION: 1.14
   name: Tests (Go $VERSION)
-  container:
-    image: golang:$VERSION
-  modules_cache:
-    fingerprint_script: cat go.sum
-    folder: $GOPATH/pkg/mod
-  # get_script: go get ./...
-  build_script: ./dev/ci/go-build.sh
-  # test_script: go test ./...
+  # container:
+  #   image: golang:$VERSION
+  macos_instance:
+    image: big-sur-base
+  build_script: uname -s; go version
